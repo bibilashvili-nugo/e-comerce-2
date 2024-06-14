@@ -98,4 +98,17 @@
     justify-content: center;
     align-items: center;
   }
+
+  .footerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footerLinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
