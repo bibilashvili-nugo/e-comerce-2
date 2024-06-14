@@ -1,5 +1,17 @@
+import Layout from "./Layout/Layout";
+import RouterComponent from "./Routers/RouterComponent";
+import { BurgerProvider } from "./context/ContextForBurger";
+
 function App() {
-  return <h1>nugo</h1>;
+  return (
+    <>
+      <BurgerProvider>
+        <Layout>
+          <RouterComponent />
+        </Layout>
+      </BurgerProvider>
+    </>
+  );
 }
 
 export default App;

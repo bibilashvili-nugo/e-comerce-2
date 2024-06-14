@@ -1,0 +1,49 @@
+.burger {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.burgerContainer {
+  width: 70vw;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  padding-top: 50px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.closeButton {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  border: none;
+  background: none;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.burgerLinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.burgerSocial {
+  display: flex;
+  gap: 15px;
+}
+
+.burgerLinks:hover {
+  padding: 1px;
+}
