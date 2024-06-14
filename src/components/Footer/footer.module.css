@@ -26,6 +26,8 @@
   display: flex;
   justify-content: space-between;
   padding-bottom: 48px;
+  position: relative;
+  width: 100%;
 }
 
 .footerContent {
@@ -52,4 +54,48 @@
 
 .footerSocial .linkButton img:hover {
   padding: 1px;
+}
+
+/* .socialAndCopy {
+  background-color: green;
+} */
+
+.footerSocial {
+  position: absolute;
+  top: 30%;
+  left: 88%;
+  width: 100px;
+  /* width: 100%; */
+  /* background-color: green; */
+}
+
+@media screen and (max-width: 768px) {
+  .footerContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footerSocial {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  .footerSectionContainer {
+    display: flex;
+  }
+  .socialAndCopy {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .socialAndCopy {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+  }
 }
