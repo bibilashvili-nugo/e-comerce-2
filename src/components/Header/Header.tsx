@@ -4,13 +4,19 @@ import BurgerMenuIcon from "../../../public/mobile/BurgerMenuIcon.png";
 import logo from "../../../public/shared/audiophile.png";
 import cart from "../../../public/shared/cart.png";
 import { useBurger } from "../../context/ContextForBurger";
+import LogIn from "../modalWindows/LogIn";
 
 const Header = () => {
-  const { setIsBurger } = useBurger();
+  const { setIsBurger, setOpen, open } = useBurger();
 
   const handleBurger = () => {
     setIsBurger(true);
   };
+
+  const openLoginModal = () => {
+    setOpen(true);
+  };
+
   return (
     <header className={styles.navbar}>
       <div className={`container ${styles.navbarContainer}`}>
@@ -23,11 +29,18 @@ const Header = () => {
           <Link to="/products/speakers">SPEAKERS</Link>
           <Link to="/products/earphones">EARPHONES</Link>
         </nav>
-        <button
-          style={{ border: "none", background: "none", cursor: "pointer" }}
-        >
-          <img src={cart} alt="shoping cart" />
-        </button>
+        <div className={styles.rightSideLRS}>
+          <button className={styles.logIn} onClick={openLoginModal}>
+            Log In
+          </button>
+          <button className={styles.Register}>Register</button>
+          <button
+            style={{ border: "none", background: "none", cursor: "pointer" }}
+          >
+            <img src={cart} alt="shoping cart" />
+          </button>
+        </div>
+        {open ? <LogIn /> : null}
       </div>
       <div className={`container ${styles.burgerMenu}`}>
         <div className={styles.burgerMenuLeftSide}>
