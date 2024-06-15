@@ -5,7 +5,7 @@ import cart from "../../../public/shared/cart.png";
 import Facebook from "../../../public/social/Facebook.png";
 import Instagram from "../../../public/social/Instagram.png";
 import Linkedin from "../../../public/social/linkedin.png";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import { useBurger } from "../../context/ContextForBurger";
 
 type BurgerChildren = {
@@ -14,13 +14,32 @@ type BurgerChildren = {
 
 const Burger = ({ children }: BurgerChildren) => {
   const { setIsBurger } = useBurger();
+  const burgerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        burgerRef.current &&
+        !burgerRef.current.contains(event.target as Node)
+      ) {
+        setIsBurger(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [setIsBurger]);
 
   const handleBurger = () => {
     setIsBurger(false);
   };
+
   return (
     <div className={styles.burger}>
-      <div className={styles.burgerContainer}>
+      <div className={styles.burgerContainer} ref={burgerRef}>
         <button className={styles.closeButton} onClick={handleBurger}>
           X
         </button>
