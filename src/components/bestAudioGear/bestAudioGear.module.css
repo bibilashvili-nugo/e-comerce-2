@@ -64,3 +64,12 @@
     text-align: center;
   }
 }
+
+@media screen and (max-width: 375px) {
+  .text {
+    font-size: 28px;
+    line-height: 38.25px;
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+}
