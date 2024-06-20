@@ -48,3 +48,38 @@
 .burgerLinks:hover {
   padding: 1px;
 }
+
+.burgerLoginAndRegister {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.burgerLoginAndRegister button {
+  border: none;
+  color: white;
+  /* background-color: transparent; */
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+.logIn {
+  background-color: #3b8bff;
+}
+
+.Register {
+  background-color: #b30000;
+}
+
+.logIn:hover {
+  background-color: #357ac9;
+}
+
+.Register:hover {
+  background-color: #990000;
+}

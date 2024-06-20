@@ -5,6 +5,7 @@ import {
   useState,
   Dispatch,
   SetStateAction,
+  useEffect,
 } from "react";
 
 interface BurgerContextType {
@@ -12,6 +13,8 @@ interface BurgerContextType {
   setIsBurger: Dispatch<SetStateAction<boolean>>;
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  openRegister: boolean;
+  setOpenRegister: Dispatch<SetStateAction<boolean>>;
 }
 
 const initialContext: BurgerContextType = {
@@ -19,6 +22,8 @@ const initialContext: BurgerContextType = {
   setIsBurger: () => {},
   open: false,
   setOpen: () => {},
+  openRegister: false,
+  setOpenRegister: () => {},
 };
 
 const BurgerContext = createContext<BurgerContextType>(initialContext);
@@ -30,12 +35,27 @@ type BurgerProviderChildren = {
 const BurgerProvider = ({ children }: BurgerProviderChildren) => {
   const [isBurger, setIsBurger] = useState(false);
   const [open, setOpen] = useState(false);
+  const [openRegister, setOpenRegister] = useState(false);
+  const [dataDummy, setDataDummy] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await fetch("http://localhost:3000/products");
+      const res = await data.json();
+      setDataDummy(res);
+    }
+    fetchData();
+  }, []);
+
+  console.log(dataDummy);
 
   const value: BurgerContextType = {
     isBurger,
     setIsBurger,
     open,
     setOpen,
+    openRegister,
+    setOpenRegister,
   };
 
   return (

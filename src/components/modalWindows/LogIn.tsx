@@ -12,9 +12,9 @@ import { useBurger } from "../../context/ContextForBurger";
 
 const StyledButton = styled(Button)({
   padding: "13px",
-  background: "#D87D4A",
+  background: "#3b8bff",
   ":hover": {
-    background: "#FBAF85",
+    background: "#357ac9",
   },
 });
 

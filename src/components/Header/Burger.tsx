@@ -13,8 +13,16 @@ type BurgerChildren = {
 };
 
 const Burger = ({ children }: BurgerChildren) => {
-  const { setIsBurger } = useBurger();
+  const { setIsBurger, setOpen, setOpenRegister } = useBurger();
   const burgerRef = useRef<HTMLDivElement>(null);
+
+  const openLoginModal = () => {
+    setOpen(true);
+  };
+
+  const openRegisterModal = () => {
+    setOpenRegister(true);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -102,6 +110,14 @@ const Burger = ({ children }: BurgerChildren) => {
               />
             </button>
           </Link>
+        </div>
+        <div className={styles.burgerLoginAndRegister}>
+          <button className={styles.logIn} onClick={openLoginModal}>
+            Log In
+          </button>
+          <button className={styles.Register} onClick={openRegisterModal}>
+            Register
+          </button>
         </div>
       </div>
       {children}

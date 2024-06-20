@@ -5,9 +5,11 @@ import logo from "../../../public/shared/audiophile.png";
 import cart from "../../../public/shared/cart.png";
 import { useBurger } from "../../context/ContextForBurger";
 import LogIn from "../modalWindows/LogIn";
+import Register from "../modalWindows/Register";
 
 const Header = () => {
-  const { setIsBurger, setOpen, open } = useBurger();
+  const { setIsBurger, setOpen, open, openRegister, setOpenRegister } =
+    useBurger();
 
   const handleBurger = () => {
     setIsBurger(true);
@@ -15,6 +17,10 @@ const Header = () => {
 
   const openLoginModal = () => {
     setOpen(true);
+  };
+
+  const openRegisterModal = () => {
+    setOpenRegister(true);
   };
 
   return (
@@ -33,14 +39,16 @@ const Header = () => {
           <button className={styles.logIn} onClick={openLoginModal}>
             Log In
           </button>
-          <button className={styles.Register}>Register</button>
+          <button className={styles.Register} onClick={openRegisterModal}>
+            Register
+          </button>
           <button
             style={{ border: "none", background: "none", cursor: "pointer" }}
           >
             <img src={cart} alt="shoping cart" />
           </button>
         </div>
-        {open ? <LogIn /> : null}
+        {open ? <LogIn /> : openRegister ? <Register /> : null}
       </div>
       <div className={`container ${styles.burgerMenu}`}>
         <div className={styles.burgerMenuLeftSide}>
@@ -60,11 +68,18 @@ const Header = () => {
           </Link>
         </div>
         <div className={styles.burgerMenuRightSide}>
+          <button className={styles.logIn} onClick={openLoginModal}>
+            Log In
+          </button>
+          <button className={styles.Register} onClick={openRegisterModal}>
+            Register
+          </button>
           <button
             style={{ border: "none", background: "none", cursor: "pointer" }}
           >
             <img src={cart} alt="shoping cart" />
           </button>
+          {/* {open ? <LogIn /> : null} */}
         </div>
       </div>
     </header>

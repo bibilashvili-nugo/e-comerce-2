@@ -10,7 +10,9 @@ type LayoutPros = {
 };
 
 const Layout = ({ children }: LayoutPros) => {
-  const { isBurger } = useBurger();
+  const { isBurger, open, setIsBurger, openRegister } = useBurger();
+  if (open || openRegister) setIsBurger(false);
+
   return (
     <>
       {isBurger ? (
