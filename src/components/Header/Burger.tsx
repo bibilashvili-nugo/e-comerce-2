@@ -13,7 +13,8 @@ type BurgerChildren = {
 };
 
 const Burger = ({ children }: BurgerChildren) => {
-  const { setIsBurger, setOpen, setOpenRegister } = useBurger();
+  const { setIsBurger, setOpen, setOpenRegister, setBurgerMenuClick } =
+    useBurger();
   const burgerRef = useRef<HTMLDivElement>(null);
 
   const openLoginModal = () => {
@@ -45,20 +46,32 @@ const Burger = ({ children }: BurgerChildren) => {
     setIsBurger(false);
   };
 
+  const handleClickBurgerMenu = () => {
+    setBurgerMenuClick(true);
+  };
+
   return (
     <div className={styles.burger}>
       <div className={styles.burgerContainer} ref={burgerRef}>
         <button className={styles.closeButton} onClick={handleBurger}>
           X
         </button>
-        <Link to="/">
+        <Link to="/" onClick={handleClickBurgerMenu}>
           <img src={logo} alt="" />
         </Link>
         <nav className={styles.burgerLinks}>
-          <Link to="/">HOME</Link>
-          <Link to="/products/headphones">HEADPHONES</Link>
-          <Link to="/products/speakers">SPEAKERS</Link>
-          <Link to="/products/earphones">EARPHONES</Link>
+          <Link to="/" onClick={handleClickBurgerMenu}>
+            HOME
+          </Link>
+          <Link to="/products/headphones" onClick={handleClickBurgerMenu}>
+            HEADPHONES
+          </Link>
+          <Link to="/products/speakers" onClick={handleClickBurgerMenu}>
+            SPEAKERS
+          </Link>
+          <Link to="/products/earphones" onClick={handleClickBurgerMenu}>
+            EARPHONES
+          </Link>
         </nav>
 
         <button

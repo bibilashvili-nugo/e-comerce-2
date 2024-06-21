@@ -15,6 +15,8 @@ interface BurgerContextType {
   setOpen: Dispatch<SetStateAction<boolean>>;
   openRegister: boolean;
   setOpenRegister: Dispatch<SetStateAction<boolean>>;
+  burgerMenuClick: boolean;
+  setBurgerMenuClick: Dispatch<SetStateAction<boolean>>;
 }
 
 const initialContext: BurgerContextType = {
@@ -24,6 +26,8 @@ const initialContext: BurgerContextType = {
   setOpen: () => {},
   openRegister: false,
   setOpenRegister: () => {},
+  burgerMenuClick: false,
+  setBurgerMenuClick: () => {},
 };
 
 const BurgerContext = createContext<BurgerContextType>(initialContext);
@@ -37,6 +41,7 @@ const BurgerProvider = ({ children }: BurgerProviderChildren) => {
   const [open, setOpen] = useState(false);
   const [openRegister, setOpenRegister] = useState(false);
   const [dataDummy, setDataDummy] = useState([]);
+  const [burgerMenuClick, setBurgerMenuClick] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -56,6 +61,8 @@ const BurgerProvider = ({ children }: BurgerProviderChildren) => {
     setOpen,
     openRegister,
     setOpenRegister,
+    burgerMenuClick,
+    setBurgerMenuClick,
   };
 
   return (

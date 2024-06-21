@@ -4,14 +4,26 @@ import Header from "../components/Header/Header";
 import Burger from "../components/Header/Burger";
 import { useBurger } from "../context/ContextForBurger";
 import BestAudioGear from "../components/bestAudioGear/bestAudioGear";
+import ProductsSection from "../components/products-section/ProductsSection";
 
 type LayoutPros = {
   children: ReactNode;
 };
 
 const Layout = ({ children }: LayoutPros) => {
-  const { isBurger, open, setIsBurger, openRegister } = useBurger();
-  if (open || openRegister) setIsBurger(false);
+  const {
+    isBurger,
+    open,
+    setIsBurger,
+    openRegister,
+    burgerMenuClick,
+    setBurgerMenuClick,
+  } = useBurger();
+
+  if (open || openRegister || burgerMenuClick) {
+    setIsBurger(false);
+    setBurgerMenuClick(false);
+  }
 
   return (
     <>
@@ -19,6 +31,7 @@ const Layout = ({ children }: LayoutPros) => {
         <Burger>
           <Header />
           {children}
+          <ProductsSection />
           <BestAudioGear />
           <Footer />
         </Burger>
@@ -26,6 +39,7 @@ const Layout = ({ children }: LayoutPros) => {
         <>
           <Header />
           {children}
+          <ProductsSection />
           <BestAudioGear />
           <Footer />
         </>
