@@ -48,6 +48,16 @@
   letter-spacing: 1.5px;
 }
 
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.buttonProduct {
+  max-width: 160px;
+}
+
 @media screen and (max-width: 375px) {
   .productsName {
     height: 102px;

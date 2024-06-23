@@ -1,6 +1,7 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styles from "./products.module.css";
 import { useEffect, useState } from "react";
+import ButtonWeb from "../components/ui/button/ButtonWeb";
 
 export interface ProductType {
   id: string;
@@ -68,6 +69,15 @@ const Products = () => {
         {products
           ?.filter((product) => product.category === params.productName)
           .map((product) => {
+            const name: string = product.name;
+            const spaceIndex = name.indexOf(" ");
+            const nameWithBreak = (
+              <>
+                {name.slice(0, spaceIndex)}
+                <br />
+                {name.slice(spaceIndex + 1)}
+              </>
+            );
             return (
               <div className={styles.productContainer} key={product.id}>
                 <img
@@ -75,15 +85,20 @@ const Products = () => {
                   src={`/${product.image.desktop}`}
                   alt="image"
                 />
-                <div>
-                  <p className={styles.productFullName}>{product.name}</p>
+                <div className={styles.productInfo}>
+                  <p className={styles.productFullName}>{nameWithBreak}</p>
                   <p className={styles.productDescription}>
                     {product.description}
                   </p>
-
-                  <Link to={`/products/${params.productName}/${product.id}`}>
-                    See details
-                  </Link>
+                  <div className={styles.buttonProduct}>
+                    <ButtonWeb
+                      isLink={true}
+                      to={`/products/${params.productName}/${product.id}`}
+                      type="primary"
+                    >
+                      SEE PRODUCT
+                    </ButtonWeb>
+                  </div>
                 </div>
               </div>
             );
