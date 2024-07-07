@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import styles from "./products.module.css";
 import { useEffect, useState } from "react";
 import ButtonWeb from "../components/ui/button/ButtonWeb";
+import useWindowDimensions from "../hooks/getWindowDimensions";
 
 export interface ProductType {
   id: string;
@@ -60,6 +61,8 @@ const Products = () => {
     getData();
   }, []);
 
+  const { width } = useWindowDimensions();
+
   return (
     <div className={styles.products}>
       <div className={styles.productsName}>
@@ -80,11 +83,24 @@ const Products = () => {
             );
             return (
               <div className={styles.productContainer} key={product.id}>
-                <img
-                  width={400}
-                  src={`/${product.image.desktop}`}
-                  alt="image"
-                />
+                {width > 768 ? (
+                  <img
+                    width={400}
+                    src={`/${product.image.desktop}`}
+                    alt="image"
+                  />
+                ) : width <= 768 ? (
+                  <div className={styles.backgroundColor}>
+                    <div className={styles.backgroundColorImagePosition}>
+                      <img
+                        width={400}
+                        src={`/${product.image.tablet}`}
+                        alt="image"
+                      />
+                    </div>
+                  </div>
+                ) : null}
+
                 <div className={styles.productInfo}>
                   <p className={styles.productFullName}>{nameWithBreak}</p>
                   <p className={styles.productDescription}>
